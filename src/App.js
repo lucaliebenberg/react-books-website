@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from "react";
 
 import Header from "./components/Header";
+import Card from "./components/Card";
+
+import "./styles/App.css";
 
 export default function App() {
   const [data, setData] = useState([]);
@@ -11,9 +14,7 @@ export default function App() {
     try {
       const response = await fetch("https://reactnative.dev/movies.json");
       const json = await response.json();
-      console.log("====================================");
-      console.log(json);
-      console.log("====================================");
+      // console.log(json);
       setData(json.movies);
     } catch (error) {
       console.error(error);
@@ -25,6 +26,46 @@ export default function App() {
   useEffect(() => {
     getMovies();
   }, []);
+
+  const RenderContent = () => {
+    return (
+      <div
+        className="RenderContent"
+        style={{
+          paddingTop: "10px",
+          justifyContent: "center",
+
+          // width: "50%",
+          // backgroundColor: "red",
+
+          display: "flex",
+          flexDirection: "row",
+          width: "800px",
+        }}
+      >
+        {data.map((item) => {
+          return (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+              }}
+            >
+              <div>
+                <Card author={item.title} />
+              </div>
+              <h1
+                style={{
+                  color: "coral",
+                }}
+              ></h1>
+              <></>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
   return (
     <div>
       <Header />
@@ -39,32 +80,14 @@ export default function App() {
           </h1>
         </>
       ) : (
-        <>
-          <h1
-            style={{
-              color: "green",
-            }}
-          >
-            Done loading
-          </h1>
-          <>
-            {data.map((item) => {
-              return (
-                <div>
-                  <h1
-                    style={{
-                      color: "coral",
-                    }}
-                  >
-                    {item.title}
-                    <div>{item.releaseYear}</div>
-                  </h1>
-                  <></>
-                </div>
-              );
-            })}
-          </>
-        </>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <RenderContent />
+        </div>
       )}
 
       <></>
