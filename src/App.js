@@ -34,10 +34,6 @@ export default function App() {
         style={{
           paddingTop: "10px",
           justifyContent: "center",
-
-          // width: "50%",
-          // backgroundColor: "red",
-
           display: "flex",
           flexDirection: "row",
           width: "800px",
