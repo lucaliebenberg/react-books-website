@@ -1,6 +1,6 @@
 # React-books-website
 
-# This was a Reactjs project which encapsulates creating a book website, implementing naviagtion and the use of data from an API
+This was a Reactjs project which encapsulates creating a book website, implementing naviagtion and the use of data from an API
 
 # Step 1:
 #git clone PATH/....git
