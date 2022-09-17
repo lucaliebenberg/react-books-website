@@ -3,7 +3,7 @@
 This was a Reactjs project which encapsulates creating a book website, implementing navigation and the use of data from an API
 
 React books is a react web app for viewing and purchasing react and react native books.
-[npm](https://reactbooks.web.app)
+[https://reactjsbooks.netlify.app/](https://reactjsbooks.netlify.app/)
 
 ## Installation
 
