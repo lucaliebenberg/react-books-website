@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Card from "../components/Card";
+import bookData from "../assets/bookData.json";
 
 import "../styles/App.css";
 
@@ -8,12 +9,25 @@ export default function Home() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const getMovies = async () => {
+  const getBooks = async () => {
     try {
-      const response = await fetch("https://reactnative.dev/movies.json");
+      var myHeaders = new Headers();
+      myHeaders.append("X-RapidAPI-Key", process.env.REACT_APP_API_KEY);
+      myHeaders.append("X-RapidAPI-Host", "hapi-books.p.rapidapi.com");
+
+      var requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
+
+      const response = await fetch(
+        "https://hapi-books.p.rapidapi.com/month/2022/3",
+        requestOptions
+      );
       const json = await response.json();
-      // console.log(json);
-      setData(json.movies);
+      console.log(json);
+      setData(json);
     } catch (error) {
       console.error(error);
     } finally {
@@ -22,7 +36,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    getMovies();
+    getBooks();
   }, []);
 
   const RenderContent = () => {
@@ -37,16 +51,18 @@ export default function Home() {
           width: "800px",
         }}
       >
+        {/* {bookData.map((item) => { */}
         {data.map((item) => {
           return (
             <div
+              key={item.book_id}
               style={{
                 display: "flex",
                 flexDirection: "row",
               }}
             >
               <div>
-                <Card author={item.title} />
+                <Card author={item.name} pagecover={item.cover} />
               </div>
               <h1
                 style={{
