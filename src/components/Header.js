@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 // import logo from "../logo.svg";
 import logo from "../assets/bookslogo.svg";
@@ -35,7 +36,9 @@ export default function Header() {
         >
           <img src={logo} alt="logo" />
         </div>
-        <h1>React js Books</h1>
+        <Link to="/">
+          <h1>React js Books</h1>
+        </Link>
       </div>
       <div
         style={{
@@ -45,13 +48,19 @@ export default function Header() {
         }}
       >
         <div>
-          <h1>Home</h1>
+          <Link to="/">
+            <h1>Home</h1>
+          </Link>
         </div>
         <div>
-          <h1>Contacts</h1>
+          <Link to="/contacts">
+            <h1>Contacts</h1>
+          </Link>
         </div>
         <div>
-          <h1>About</h1>
+          <Link to="/about">
+            <h1>About</h1>
+          </Link>
         </div>
       </div>
     </div>

@@ -62,7 +62,6 @@ export default function Home() {
   };
   return (
     <div>
-      <Header />
       {loading ? (
         <>
           <h1
