@@ -1,92 +1,93 @@
-// import logo from "./logo.svg";
-import React, { useEffect, useState } from "react";
-
-import Header from "./components/Header";
-import Card from "./components/Card";
-
-import "./styles/App.css";
+import * as React from "react";
+import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
 
 export default function App() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const getMovies = async () => {
-    try {
-      const response = await fetch("https://reactnative.dev/movies.json");
-      const json = await response.json();
-      // console.log(json);
-      setData(json.movies);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getMovies();
-  }, []);
-
-  const RenderContent = () => {
-    return (
-      <div
-        className="RenderContent"
-        style={{
-          paddingTop: "10px",
-          justifyContent: "center",
-          display: "flex",
-          flexDirection: "row",
-          width: "800px",
-        }}
-      >
-        {data.map((item) => {
-          return (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-              }}
-            >
-              <div>
-                <Card author={item.title} />
-              </div>
-              <h1
-                style={{
-                  color: "coral",
-                }}
-              ></h1>
-              <></>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
   return (
     <div>
-      <Header />
-      {loading ? (
-        <>
-          <h1
-            style={{
-              color: "red",
-            }}
-          >
-            Loading...
-          </h1>
-        </>
-      ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <RenderContent />
-        </div>
-      )}
+      {/* Routes nest inside one another. Nested route paths build upon
+            parent route paths, and nested route elements render inside
+            parent route elements. See the note about <Outlet> below. */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="dashboard" element={<Dashboard />} />
 
-      <></>
+            {/* Using path="*"" means "match anything", so this route
+                acts like a catch-all for URLs that we don't have explicit
+                routes for. */}
+            <Route path="*" element={<NoMatch />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+function Layout() {
+  return (
+    <div>
+      {/* A "layout route" is a good place to put markup you want to
+          share across all the pages on your site, like navigation. */}
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <Link to="/nothing-here">Nothing Here</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <hr />
+
+      {/* An <Outlet> renders whatever child route is currently active,
+          so you can think about this <Outlet> as a placeholder for
+          the child routes we defined above. */}
+      <Outlet />
+    </div>
+  );
+}
+
+function Home() {
+  return (
+    <div>
+      <h2>Home</h2>
+    </div>
+  );
+}
+
+function About() {
+  return (
+    <div>
+      <h2>About</h2>
+    </div>
+  );
+}
+
+function Dashboard() {
+  return (
+    <div>
+      <h2>Dashboard</h2>
+    </div>
+  );
+}
+
+function NoMatch() {
+  return (
+    <div>
+      <h2>Nothing to see here!</h2>
+      <p>
+        <Link to="/">Go to the home page</Link>
+      </p>
     </div>
   );
 }
