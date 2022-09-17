@@ -26,10 +26,22 @@ export default function Home() {
         requestOptions
       );
       const json = await response.json();
-      console.log(json);
-      setData(json);
+      console.log("This is the response json", json);
+
+      if (response.status == 429) {
+        console.log("====================================");
+        console.log("this is the response message", response.status);
+        console.log("====================================");
+        setData(bookData);
+      } else {
+        console.log("The response message is valid");
+        setData(json);
+      }
     } catch (error) {
-      console.error(error);
+      setData(bookData);
+      setLoading(false);
+
+      console.error("HERE IS THE ERROR", error);
     } finally {
       setLoading(false);
     }

@@ -2,8 +2,6 @@
 
 This was a Reactjs project which encapsulates creating a book website, implementing navigation and the use of data from an API
 
-# react books
-
 React books is a react web app for viewing and purchasing react and react native books.
 [npm](https://reactbooks.web.app)
 
@@ -35,13 +33,15 @@ Inside the .env add your api key
 REACT_APP_API_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 ```
 
-Then finally
+Then finally, to begin the development, run `npm start` or `yarn start`.
 
 ```bash
 
 npm start
 
 ```
+
+To create a production bundle, use `npm run build` or `yarn build`.
 
 Happy Hacking!!
 
