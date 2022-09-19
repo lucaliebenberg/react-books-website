@@ -1,0 +1,19 @@
+.CardImage {
+  display: flex;
+  /* width: 100px; */
+  padding: 10px;
+}
+
+.card-image {
+  width: 200px;
+}
+
+@media screen and (max-width: 550px) {
+  .card-image {
+    width: 80px;
+  }
+}
+
+.Author {
+  display: flex;
+}

@@ -1,20 +1,13 @@
 import React from "react";
-
-// import pagecover from "../assets/pagecover.png";
+import "../styles/Card.css";
 
 export default function Card(props) {
   return (
-    <div>
+    <>
       <div className="CardImage">
-        <img
-          src={props.pagecover}
-          style={{
-            width: "80px",
-          }}
-          alt="Card"
-        />
+        <img className="card-image" src={props.pagecover} alt="Card" />
       </div>
-      <div className="Author">{/* <h2>{props.author}</h2> */}</div>
-    </div>
+      <div className="Author"> {/* <h2>{props.author}</h2> */}</div>
+    </>
   );
 }

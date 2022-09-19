@@ -1,0 +1,12 @@
+.book-cover {
+  width: 100;
+}
+.RenderContent {
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 550px) {
+  .hamburger {
+    display: block;
+  }
+}

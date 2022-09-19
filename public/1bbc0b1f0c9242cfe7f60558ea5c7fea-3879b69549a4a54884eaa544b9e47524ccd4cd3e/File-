@@ -1,0 +1,344 @@
+  const renderPayment = () => {
+    const StoreName = " Store ";
+    const message = "Thanks for your order!";
+    const FinalPrice = cartTotal;
+    const PriceToYoco = FinalPrice * 100;
+    const OrderNumbertoYoco = OrderNumber;
+
+    //if payment is successful go to success page
+
+    const customHTML = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=\, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="container-center" data-name="container-center">
+      <section class="section">
+        <div class="div">
+          <picture>
+            <source
+              srcset="
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?format=webp&width=100   100w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?format=webp&width=200   200w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?format=webp&width=400   400w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?format=webp&width=800   800w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?format=webp&width=1200 1200w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?format=webp&width=1600 1600w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?format=webp&width=2000 2000w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?format=webp&width=598   598w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?format=webp&width=958   958w
+              "
+              type="image/webp"
+            />
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?width=1200"
+              sizes="(max-width: 638px) 94vw, (max-width: 998px) 96vw, 86vw"
+              srcset="
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?width=100   100w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?width=200   200w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?width=400   400w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?width=800   800w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?width=1200 1200w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?width=1600 1600w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?width=2000 2000w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?width=598   598w,
+                https://cdn.builder.io/api/v1/image/assets%2F2f3fdefdb4074bcf9f6970cf71efad1b%2F931280ef5ee04975af73bf78e6903768?width=958   958w
+              "
+              class="image"
+              data-name="image"
+            />
+          </picture>
+          <div class="builder-image-sizer image-sizer"></div>
+        </div>
+        <div class="div-2">
+          <div class="div-3">
+            <div class="builder-columns div-4">
+              <div class="builder-column column">
+                <div class="div-5"><p>Total Amount</p></div>
+              </div>
+              <div class="builder-column column-2">
+                <div class="div-6"><p>R${FinalPrice}</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="div-7">
+        <!-- Create a pay button that will open the popup-->
+    
+          <span  id="checkout-button" class="span">PAY</span>
+          <div class="div-8">
+            <p>
+              Safe and secure. All transactions through Yoco Gateway are protected
+              by 3D-Secure technology.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <style>
+      .container-center {
+        border-radius: 0px;
+        position: relative;
+        align-self: stretch;
+        margin-left: calc(50% - 50vw);
+        width: 100vw;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .section {
+        width: 100%;
+        align-self: stretch;
+        flex-grow: 1;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .div {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: 20px;
+        width: 100%;
+        min-height: 20px;
+        min-width: 20px;
+        overflow: hidden;
+      }
+      .image {
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+      }
+      .image-sizer {
+        width: 100%;
+        padding-top: 60.260000000000005%;
+        pointer-events: none;
+        font-size: 0;
+      }
+      .div-2 {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: -1px;
+      }
+      @media (max-width: 640px) {
+        .div-2 {
+          padding-top: 0px;
+        }
+      }
+      .div-3 {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: 20px;
+      }
+      .div-4 {
+        display: flex;
+      }
+      .column {
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        width: calc(50% - 10px);
+        margin-left: 0px;
+      }
+      .div-5 {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: 30px;
+        text-align: center;
+        line-height: normal;
+        height: auto;
+      }
+      .column-2 {
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        width: calc(50% - 10px);
+        margin-left: 20px;
+      }
+      .div-6 {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: 30px;
+        text-align: center;
+        line-height: normal;
+        height: auto;
+      }
+      .div-7 {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: 20px;
+        height: 200px;
+      }
+      @media (max-width: 640px) {
+        .div-7 {
+          height: auto;
+          padding-bottom: 30px;
+        }
+      }
+      .span {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: 20px;
+        appearance: none;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 25px;
+        padding-right: 25px;
+        background-color: #3898EC;
+        color: white;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+      }
+      @media (max-width: 640px) {
+        .span {
+          background-color: rgba(0, 0, 0, 1);
+        }
+      }
+      .div-8 {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: 20px;
+        line-height: normal;
+        height: auto;
+        text-align: center;
+      }
+    </style>
+    <script>
+      (() => {
+        const state = {};
+    
+        // Function to update data bindings and loops
+        // call update() when you mutate state and need the updates to reflect
+        // in the dom
+        function update() {
+          document
+            .querySelectorAll("[data-name='container-center']")
+            .forEach((el) => {
+              el.maxWidth = 1200;
+            });
+    
+          document.querySelectorAll("[data-name='image']").forEach((el) => {
+            el.loading = "lazy";
+          });
+        }
+    
+        // Update with initial state on first load
+        update();
+      })();
+    </script>
+    <!-- Include the Yoco SDK in your web page -->
+    <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
+    
+    
+  <script>
+      var yoco = new window.YocoSDK({
+        publicKey: "XXXXXXXXXXXXXX",
+            });
+      var checkoutButton = document.querySelector('#checkout-button');
+      checkoutButton.addEventListener('click', function () {
+        yoco.showPopup({
+          amountInCents: '${PriceToYoco}',
+          currency: 'ZAR',
+          name: '${StoreName}',
+          description: 'Awesome, you bought a magneto emergency light',
+            callback: function (result) {
+            // This function returns a token that your server can use to capture a payment
+            if (result.error) {
+              const errorMessage = result.error.message;
+              alert("error occured: " + errorMessage);
+              
+            } else {
+              // alert("card successfully tokenised: " + result.id);
+              var myHeaders = new Headers();
+              myHeaders.append("Content-Type", "application/json");
+  
+              var raw = JSON.stringify({
+                "token": result.id,
+                "amount": "${PriceToYoco}",
+              "order_number": '${OrderNumbertoYoco}'
+              });
+  
+              var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+              };
+  
+              fetch(
+                "https://magneto-backend-production.herokuapp.com/v1/payments/actions/complete-payment"                ,
+                 requestOptions)
+                .then(response => response.json())
+                .then(result =>  {
+                  // console.log(result); 
+                  // {"message":"payment successful","status":"success"}
+  
+                  if (result.status === 'success') {
+                    // alert("payment successful!!");
+                    let PaymentSuccess = true;
+                    getPaymentStatusValue(true) 
+                    //run function to change the page
+                  }
+                  else {
+                      alert("error");
+                      let PaymentSuccess = false;
+                      getPaymentStatusValue(false) 
+                      console.log(result);
+                  }
+                })
+                .catch(error => console.log('error', error));
+                        }
+                        // In a real integration - you would now pass this chargeToken back to your
+                        // server along with the order/basket that the customer has purchased.
+                      }
+                    })
+                  });
+                  function getPaymentStatusValue(PaymentSuccess) {
+                    window.ReactNativeWebView.postMessage(PaymentSuccess);              
+                  };
+             
+    </script>    
+    </body>
+    </html>
+  
+    `;
+
+    return (
+      <>
+        <View style={{ alignItems: "center" }}>
+          <Text style={{ fontSize: 10, fontWeight: "bold", color: "grey" }}>
+            Payment status: {paymentSuccessful ? "Successful" : "Pending"}
+          </Text>
+        </View>
+        {paymentSuccessful ? (
+          <OrderStatusScreen />
+        ) : (
+          <WebView
+            onMessage={(event) => {
+              console.log("EVENT-DATA:", event);
+              setPaymentSuccessful(event.nativeEvent.data);
+            }}
+            source={{ html: customHTML }}
+          />
+        )}
+      </>
+    );
+  };

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
 import Card from "../components/Card";
 import bookData from "../assets/bookData.json";
 
-import "../styles/App.css";
+import "../styles/Home.css";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -28,7 +27,7 @@ export default function Home() {
       const json = await response.json();
       console.log("This is the response json", json);
 
-      if (response.status == 429) {
+      if (response.status === 429) {
         console.log("====================================");
         console.log("this is the response message", response.status);
         console.log("====================================");
@@ -60,7 +59,8 @@ export default function Home() {
           justifyContent: "center",
           display: "flex",
           flexDirection: "row",
-          width: "800px",
+          width: "80%",
+          // backgroundColor: "red",
         }}
       >
         {/* {bookData.map((item) => { */}
@@ -76,12 +76,6 @@ export default function Home() {
               <div>
                 <Card author={item.name} pagecover={item.cover} />
               </div>
-              <h1
-                style={{
-                  color: "coral",
-                }}
-              ></h1>
-              <></>
             </div>
           );
         })}
